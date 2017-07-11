@@ -1,0 +1,29 @@
+{
+  "name": "twitch_api_angular_app",
+  "version": "1.0.0",
+  "description": "Angular JS Web App using the Twitch JSON API to view online, offline, and unknown streamers.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mizuone/twitchAPIAngularApp.git"
+  },
+  "keywords": [
+    "AngularJS",
+    "JavaScript",
+    "MaterialDesign"
+  ],
+  "author": "Kyle Orlinski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mizuone/twitchAPIAngularApp.gitissues"
+  },
+  "homepage": "https://github.com/Mizuone/twitchAPIAngularApp.git#readme"
+}

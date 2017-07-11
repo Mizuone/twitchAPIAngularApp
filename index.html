@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Twitch Online Streamers</title>
+    <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.4/angular-material.min.css" type="text/css" rel="stylesheet">
+    <link href="css/fcc_twitch_api.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-animate.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-aria.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <script type="text/javascript" src="./src/app.js"></script>
+
+    <!--services-->
+    <script type="text/javascript" src="./src/services/twitchdata_service.js"></script>
+    <script type="text/javascript" src="./src/services/searchstreamers_service.js"></script>
+    <script type="text/javascript" src="./src/services/stringparser_service.js"></script>
+
+    <!--directives-->
+    <script type="text/javascript" src="./src/directives/onlinestreamers.js"></script>
+    <script type="text/javascript" src="./src/directives/offlinestreamers.js"></script>
+    <script type="text/javascript" src="./src/directives/notfoundstreamers.js"></script>
+
+    <!--controllers-->
+    <script type="text/javascript" src="./src/controllers/maincontroller.js"></script>
+    <script type="text/javascript" src="./src/controllers/sidenav.js"></script>
+
+    <base href="/">
+  </head>
+  <body>
+    <div ng-app="fcc_twitch_api" class="fcc-twitch-container" ng-controller="sideNav" >
+      <div ng-controller="mainController">
+    <md-sidenav class="md-sidenav-left" md-component-id="left"
+                 md-whiteframe="4">
+
+      <md-toolbar class="md-default-theme">
+        <i class="fa fa-angle-left" aria-hidden="true" ng-click="toggleLeft()" class="md-accent"></i>
+        <h1>Menu</h1>
+      </md-toolbar>
+
+      <md-content layout-margin>
+
+        <a href="/" ng-click="toggleLeft(); setViewTitle('Streamers');">
+          <div class="side-nav-link-container">
+            <span class="side-nav-link">View All Streamers</span>
+          </div>
+        </a>
+        <a href="/online-only" ng-click="toggleLeft(); setViewTitle('Online');">
+          <div class="side-nav-link-container">
+            <span class="side-nav-link">Online Only</span>
+          </div>
+        </a>
+        <a href="/offline-only" ng-click="toggleLeft(); setViewTitle('Offline')">
+          <div class="side-nav-link-container">
+            <span class="side-nav-link">Offline Only</span>
+          </div>
+        </a>
+
+        <md-input-container class="md-icon-float">
+          <label>Search</label>
+          <md-icon md-font-icon="fa fa-search"></md-icon>
+          <input ng-model="inputValue" class="side-nav-search" ng-model="searchInput" id="sInput" ng-change="filterCartoList(searchInput)" my-enter="filterCartoList(searchInput)" />
+        </md-input-container>
+
+        <h3 class="developer-credit">Created by <a href="http://kyleorlinski.com" rel="noopener noreferrer" target="_blank" class="developer-credit-link">Kyle Orlinski</a></h3>
+      </md-content>
+
+    </md-sidenav>
+
+
+      <nav>
+        <md-button class="hamburgermenu" ng-click="toggleLeft()" class="md-raised"></md-button>
+        <h1>{{viewTitle}}</h1>
+
+      </nav>
+
+      <main>
+        <div ng-view>
+
+        </div>
+      </main>
+      </div>
+    </div>
+  </body>
+</html>
