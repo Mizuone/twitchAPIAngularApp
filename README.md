@@ -1,4 +1,6 @@
 # twitchAPIAngularApp
+
+<h2>Description</h2>
 Angular JS Web App using the Twitch JSON API to view online, offline, and unknown streamers.
 
 <h2>Installation</h2>
