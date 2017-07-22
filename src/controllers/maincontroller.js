@@ -18,7 +18,7 @@
           .then(function(twitchResponse) {
 
           var dataProp = twitchResponse.data,
-              streamerObj = JSON.parse(dataProp.slice(dataProp.indexOf('{'), dataProp.length - 2)); //refactor
+              streamerObj = sliceJSONString(dataProp, 2);
 
           streamersChannelArr.push(streamerObj);
 
@@ -27,7 +27,7 @@
 
              $twitchData_service.retrieveStreamer('https://wind-bow.glitch.me/twitch-api/streams/'+ streamers[y].toLowerCase() +'?callback=?').then(function(streamerResponse) {
                 var streamerProp = streamerResponse.data,
-                    streamerObj = JSON.parse(streamerProp.slice(streamerProp.indexOf('{'), streamerProp.length - 2));
+                    streamerObj = sliceJSONString(streamerProp, 2);
 
                  streamersStreamArr.push(streamerObj);
                 console.log(streamersStreamArr);
@@ -52,6 +52,10 @@
       streamer: $stringParser.getSequenceAfterSlash,
       streamerNotFound: $stringParser. getNameFromContainingQuotes,
       streamerLongGameTitle: longGameTitles
+    }
+
+    function sliceJSONString(string, sliceEndPosition) {
+      return JSON.parse(string.slice(string.indexOf('{'), string.length - sliceEndPosition));
     }
 
   }]);
